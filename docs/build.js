@@ -540,7 +540,7 @@ module.exports = function normalizeComponent (
     name: 'App',
     data() {
         return {
-            lineCount: 0,
+            lineCount: 1,
             randomedLines: []
         };
     },
@@ -14347,7 +14347,7 @@ var index = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(4);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2bc019c3_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6553ef5d_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(20);
 function injectStyle (ssrContext) {
   __webpack_require__(13)
 }
@@ -14367,7 +14367,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2bc019c3_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6553ef5d_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -14388,7 +14388,7 @@ var content = __webpack_require__(14);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("149f423d", content, true, {});
+var update = __webpack_require__(2)("7618ed65", content, true, {});
 
 /***/ }),
 /* 14 */
@@ -14516,7 +14516,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('h3',[_vm._v("Random hero challenge")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.lineCount),expression:"lineCount"}],staticClass:"line_count_input",on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.lineCount=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"1","selected":""}},[_vm._v("1")]),_vm._v(" "),_c('option',{attrs:{"value":"3"}},[_vm._v("3")]),_vm._v(" "),_c('option',{attrs:{"value":"5"}},[_vm._v("5")])]),_vm._v(" "),_c('button',{staticClass:"run_control",on:{"click":_vm.run}},[_vm._v("Go!")]),_vm._v(" "),_c('ul',_vm._l((_vm.randomedLines),function(line){return _c('li',{key:line.hero.id},[_c('RandomLine',{attrs:{"hero":line.hero,"role":line.laneRole}})],1)}),0)])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('h3',[_vm._v("Random hero challenge")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.lineCount),expression:"lineCount"}],staticClass:"line_count_input",on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.lineCount=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"1"}},[_vm._v("1")]),_vm._v(" "),_c('option',{attrs:{"value":"3"}},[_vm._v("3")]),_vm._v(" "),_c('option',{attrs:{"value":"5"}},[_vm._v("5")])]),_vm._v(" "),_c('button',{staticClass:"run_control",on:{"click":_vm.run}},[_vm._v("Go!")]),_vm._v(" "),_c('ul',_vm._l((_vm.randomedLines),function(line){return _c('li',{key:line.hero.id},[_c('RandomLine',{attrs:{"hero":line.hero,"role":line.laneRole}})],1)}),0)])}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
