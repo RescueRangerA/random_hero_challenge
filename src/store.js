@@ -952,6 +952,12 @@ const state = {
         "roles": ["Carry", "Initiator", "Disabler", "Durable"],
         "legs": 2
     }],
+    additional: {
+        lane_roles: ["Support", "Carry", "Mid", "Jungle"],
+    },
+    general: {
+
+    },
 };
 
 state.heroes.forEach(hero => (hero.icon = require("./assets/heroes/icons/" + hero.name + ".png")));

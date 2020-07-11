@@ -13,6 +13,23 @@ Vue.mixin({
         heroes() {
             return this.$store.state.heroes;
         },
+        laneRoles() {
+            return this.$store.state.additional.lane_roles;
+        },
+    },
+    methods: {
+        getRandomListItem: function (list) {
+            return list[Math.floor(Math.random() * list.length)];
+        },
+        popRandomListItem: function (list) {
+            let index = Math.floor(Math.random() * list.length);
+            let item = Object.assign({}, list[index]);
+
+            // delete by reference
+            list = list.splice(index, 1);
+
+            return item;
+        }
     },
 })
 
