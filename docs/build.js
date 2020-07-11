@@ -514,7 +514,14 @@ module.exports = function normalizeComponent (
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Hero_vue__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_RandomLine__ = __webpack_require__(16);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -531,8 +538,43 @@ module.exports = function normalizeComponent (
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     name: 'App',
+    data() {
+        return {
+            lineCount: 0,
+            randomedLines: []
+        };
+    },
     components: {
-        Hero: __WEBPACK_IMPORTED_MODULE_0__components_Hero_vue__["a" /* default */]
+        RandomLine: __WEBPACK_IMPORTED_MODULE_0__components_RandomLine__["a" /* default */]
+    },
+    methods: {
+        run: function () {
+            this.randomedLines = [];
+
+            let heroes = [];
+            this.heroes.forEach(hero => heroes.push(Object.assign({}, hero)));
+
+            for (let i = 1; i <= this.lineCount; i++) {
+                let hero = this.popRandomListItem(heroes);
+                let laneRole = this.getRandomListItem(this.laneRoles);
+
+                this.randomedLines.push({
+                    hero: hero,
+                    laneRole: laneRole
+                });
+            }
+
+            this.randomedLines.sort(function (a, b) {
+                if (a.hero.name > b.hero.name) {
+                    return 1;
+                }
+                if (a.hero.name < b.hero.name) {
+                    return -1;
+                }
+                // a должно быть равным b
+                return 0;
+            });
+        }
     }
 });
 
@@ -548,10 +590,18 @@ module.exports = function normalizeComponent (
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    props: ['hero'],
-    name: "Hero"
+    props: ['hero', 'role'],
+    name: "RandomLine"
 });
 
 /***/ }),
@@ -576,6 +626,23 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].mixin({
     computed: {
         heroes() {
             return this.$store.state.heroes;
+        },
+        laneRoles() {
+            return this.$store.state.additional.lane_roles;
+        }
+    },
+    methods: {
+        getRandomListItem: function (list) {
+            return list[Math.floor(Math.random() * list.length)];
+        },
+        popRandomListItem: function (list) {
+            let index = Math.floor(Math.random() * list.length);
+            let item = Object.assign({}, list[index]);
+
+            // delete by reference
+            list = list.splice(index, 1);
+
+            return item;
         }
     }
 });
@@ -14280,7 +14347,7 @@ var index = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(4);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_207722a8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2bc019c3_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(20);
 function injectStyle (ssrContext) {
   __webpack_require__(13)
 }
@@ -14300,7 +14367,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_207722a8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2bc019c3_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -14321,7 +14388,7 @@ var content = __webpack_require__(14);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("51fc45dd", content, true, {});
+var update = __webpack_require__(2)("149f423d", content, true, {});
 
 /***/ }),
 /* 14 */
@@ -14332,7 +14399,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "#app{font-family:Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-align:center;color:#2c3e50;margin-top:60px}ul{list-style-type:none}", ""]);
+exports.push([module.i, "#app{font-family:Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-align:center;color:#2c3e50;margin-top:60px}ul{list-style-type:none}.line_count_input,.run_control{width:100px;height:50px;font-size:30px}", ""]);
 
 // exports
 
@@ -14375,9 +14442,9 @@ module.exports = function listToStyles (parentId, list) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Hero_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_RandomLine_vue__ = __webpack_require__(5);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_33383b62_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Hero_vue__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7057b1fb_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_RandomLine_vue__ = __webpack_require__(19);
 function injectStyle (ssrContext) {
   __webpack_require__(17)
 }
@@ -14392,12 +14459,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-33383b62"
+var __vue_scopeId__ = "data-v-7057b1fb"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Hero_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_33383b62_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Hero_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_RandomLine_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7057b1fb_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_RandomLine_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -14418,7 +14485,7 @@ var content = __webpack_require__(18);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("42b04d6d", content, true, {});
+var update = __webpack_require__(2)("1af5e45d", content, true, {});
 
 /***/ }),
 /* 18 */
@@ -14429,7 +14496,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".random_line[data-v-7057b1fb]{display:flex;text-align:center}.random_line .hero_name[data-v-7057b1fb]{margin:auto 10px;min-width:150px}.random_line .role[data-v-7057b1fb]{margin:auto 10px;min-width:100px}", ""]);
 
 // exports
 
@@ -14439,7 +14506,7 @@ exports.push([module.i, "", ""]);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('img',{attrs:{"src":_vm.hero.icon,"alt":_vm.hero.name}}),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.hero.localized_name))])])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"random_line"},[_c('div',{staticClass:"hero_icon"},[_c('img',{attrs:{"src":_vm.hero.icon,"alt":_vm.hero.name}})]),_vm._v(" "),_c('div',{staticClass:"hero_name"},[_c('span',[_vm._v(_vm._s(_vm.hero.localized_name))])]),_vm._v(" "),_c('div',{staticClass:"role"},[_c('span',[_vm._v(_vm._s(this.role))])])])}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -14449,7 +14516,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('h3',[_vm._v("List of heroes")]),_vm._v(" "),_c('ul',_vm._l((_vm.heroes),function(hero){return _c('li',{key:hero.id},[_c('Hero',{attrs:{"hero":hero}})],1)}),0)])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('h3',[_vm._v("Random hero challenge")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.lineCount),expression:"lineCount"}],staticClass:"line_count_input",on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.lineCount=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"1","selected":""}},[_vm._v("1")]),_vm._v(" "),_c('option',{attrs:{"value":"3"}},[_vm._v("3")]),_vm._v(" "),_c('option',{attrs:{"value":"5"}},[_vm._v("5")])]),_vm._v(" "),_c('button',{staticClass:"run_control",on:{"click":_vm.run}},[_vm._v("Go!")]),_vm._v(" "),_c('ul',_vm._l((_vm.randomedLines),function(line){return _c('li',{key:line.hero.id},[_c('RandomLine',{attrs:{"hero":line.hero,"role":line.laneRole}})],1)}),0)])}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -15411,7 +15478,11 @@ const state = {
         "attack_type": "Melee",
         "roles": ["Carry", "Initiator", "Disabler", "Durable"],
         "legs": 2
-    }]
+    }],
+    additional: {
+        lane_roles: ["Support", "Carry", "Mid", "Jungle"]
+    },
+    general: {}
 };
 
 state.heroes.forEach(hero => hero.icon = __webpack_require__(22)("./" + hero.name + ".png"));
