@@ -2,7 +2,7 @@
     <div id="app">
         <h3>Random hero challenge</h3>
         <select class="line_count_input" v-model="lineCount">
-            <option value="1" selected>1</option>
+            <option value="1">1</option>
             <option value="3">3</option>
             <option value="5">5</option>
         </select>
@@ -23,7 +23,7 @@
         name: 'App',
         data() {
             return {
-                lineCount: 0,
+                lineCount: 1,
                 randomedLines: [],
             }
         },
