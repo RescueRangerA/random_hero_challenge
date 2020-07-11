@@ -954,8 +954,8 @@ const state = {
     }],
 };
 
-state.heroes.forEach(hero => (hero.icon = require("./heroes/icons/" + hero.name + ".png")));
-state.heroes.forEach(hero => (hero.img = require("./heroes/imgs/" + hero.name + ".png")));
+state.heroes.forEach(hero => (hero.icon = require("./assets/heroes/icons/" + hero.name + ".png")));
+state.heroes.forEach(hero => (hero.img = require("./assets/heroes/imgs/" + hero.name + ".png")));
 
 const mutations = {};
 
