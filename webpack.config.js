@@ -72,6 +72,4 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new CleanWebpackPlugin()
   ])
-
-  module.exports.publicPath = '/';
 }
